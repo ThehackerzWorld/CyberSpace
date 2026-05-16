@@ -1,38 +1,39 @@
-import { GoogleGenAI } from "@google/genai";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   const { prompt } = await req.json();
 
-  if (!process.env.GEMINI_API_KEY) {
-    return NextResponse.json(
-      { error: "GEMINI_API_KEY is not configured." },
-      { status: 500 }
-    );
-  }
-
   try {
-    const ai = new GoogleGenAI({
-      apiKey: process.env.GEMINI_API_KEY!,
-      httpOptions: {
-        headers: {
-          "User-Agent": "aistudio-build",
-        },
-      },
-    });
+    // Gemini analysis has been removed per user request.
+    // Returning a mock response to maintain UI functionality.
+    const mockResult = `
+INTELLIGENCE ASSESSMENT (SIMULATED)
+----------------------------------
+Target: Data provided in prompt
 
-    const response = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
-      contents: prompt,
-    });
+1. POTENTIAL EXPOSURE POINTS
+- External service misconfigurations based on common patterns.
+- Information disclosure via leaked credentials in public repositories.
+- Unencrypted data transmission vectors.
 
-    const text = response.text;
+2. RECOMMENDED RECONNAISSANCE
+- Site-specific searches for internal documentation.
+- WHOIS and DNS record analysis for sub-domain enumeration.
+- OSINT checks across known breach databases.
 
-    return NextResponse.json({ result: text });
+3. MITIGATION STRATEGIES
+- Enforce strict IAM policies and MFA across all access points.
+- Implement regular automated vulnerability scanning.
+- Review and harden external-facing API endpoints.
+
+NOTE: Real-time AI analysis is currently disabled.
+    `.trim();
+
+    return NextResponse.json({ result: mockResult });
   } catch (error: any) {
-    console.error("AI Analysis Error:", error);
+    console.error("Analysis Route Error:", error);
     return NextResponse.json(
-      { error: "Failed to generate analysis result." },
+      { error: "Failed to process analysis request." },
       { status: 500 }
     );
   }

@@ -1,5 +1,6 @@
 import { PanelCard } from "@/components/panel-card";
 import { SiteShell } from "@/components/site-shell";
+import { AnalysisTool } from "@/components/analysis-tool";
 
 const intelligenceModules = [
   {
@@ -32,6 +33,10 @@ export default function IntelligencePage() {
       title="Threat intelligence workflows that explain themselves clearly."
       subtitle="This section turns your strongest tools into guided product experiences so users know how to use them and why the output matters."
     >
+      <section className="stackSection">
+        <AnalysisTool />
+      </section>
+
       <section className="stackSection">
         <div className="cardGrid">
           {intelligenceModules.map((module) => (
