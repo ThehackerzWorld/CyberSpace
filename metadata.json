@@ -1,6 +1,6 @@
 {
-  "name": "Digital Chirkut",
-  "description": "Digital Chirkut Platform App - A platform for sharing snippets and notes.",
+  "name": "CyberSpace",
+  "description": "Digital Chirkut Platform App - A progressive cybersecurity workspace framework.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": []
 }
